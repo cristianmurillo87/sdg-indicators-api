@@ -1,27 +1,18 @@
 const express = require('express');
+const bp = require('body-parser');
+const { Pool } = require('pg');
 
-let app = express();
+const { config } = require('./config/config');
+const router = require('./routes/router');
 
-app.get('/', (req, res) => {
-    res.send({
-        name : "Cristian",
-        likes : [
-            "Coding",
-            "Football",
-            "Girls"
-        ]
-    });
-});
+const app = express();
 
-app.get('/about', (req, res) => {
-    res.send('About Page');
-});
+app.use(bp.json())
+app.use(bp.urlencoded({extended: false}));
 
-app.get('/bad', (req, res) => {
-    res.send({
-        errorMessage : "Error procesing the request"
-    });
-});
+const pool = new Pool();
+
+app.use('/api', router);
 
 app.listen(3000, () => {
     console.log("Server is up on port 3000");

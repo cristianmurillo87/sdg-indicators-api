@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/cristianmurillo87/sdg-indicators-api#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "pg": "^7.4.2"
   }
 }
