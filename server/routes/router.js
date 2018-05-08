@@ -39,7 +39,7 @@ router.get('/goal/:goal_id', (req, res) => {
                     res.status(200).send({
                         success : true,
                         http_code : 200,
-                        data : resp.rows
+                        data : resp.rows[0]
                     });
                 } else {
                     res.status(404).send({
@@ -71,7 +71,7 @@ router.get('/targets/:goal_id', (req, res) => {
                     res.status(200).send({
                         success : true,
                         http_code : 200,
-                        data : resp.rows
+                        data : resp.rows[0]
                     });
                 } else {
                     res.status(404).send({
@@ -103,7 +103,7 @@ router.get('/target/:target_id', (req, res) => {
                     res.status(200).send({
                         success : true,
                         http_code : 200,
-                        data : resp.rows
+                        data : resp.rows[0]
                     });
                 } else {
                     res.status(404).send({
@@ -135,7 +135,7 @@ router.get('/indicators/:target_id', (req, res) => {
                     res.status(200).send({
                         success : true,
                         http_code : 200,
-                        data : resp.rows
+                        data : resp.rows[0]
                     });
                 } else {
                     res.status(404).send({
@@ -167,7 +167,7 @@ router.get('/indicator/:indicator', (req, res) => {
                     res.status(200).send({
                         success : true,
                         http_code : 200,
-                        data : resp.rows
+                        data : resp.rows[0]
                     });
                 } else {
                     res.status(404).send({
@@ -199,7 +199,7 @@ router.get('/series/:indicator', (req, res) => {
                     res.status(200).send({
                         success : true,
                         http_code : 200,
-                        data : resp.rows
+                        data : resp.rows[0]
                     });
                 } else {
                     res.status(404).send({
@@ -231,7 +231,7 @@ router.get('/series/:series_id/years', (req, res) => {
                     res.status(200).send({
                         success : true,
                         http_code : 200,
-                        data : resp.rows
+                        data : resp.rows[0]
                     });
                 } else {
                     res.status(404).send({
@@ -264,7 +264,7 @@ router.get('/series/:series_id/:year/age', (req, res) => {
                     res.status(200).send({
                         success : true,
                         http_code : 200,
-                        data : resp.rows
+                        data : resp.rows[0]
                     });
                 } else {
                     res.status(404).send({
@@ -298,7 +298,7 @@ router.get('/series/:series_id/:year/:age_group_id/genders', (req, res) => {
                     res.status(200).send({
                         success : true,
                         http_code : 200,
-                        data : resp.rows
+                        data : resp.rows[0]
                     });
                 } else {
                     res.status(404).send({
@@ -334,7 +334,7 @@ router.get('/mapdata/:series_id/:year', (req, res) => {
                         res.status(200).send({
                             success : true,
                             http_code : 200,
-                            data : resp.rows
+                            data : resp.rows[0]._data
                         });
                     } else {
                         res.status(404).send({
