@@ -123,6 +123,39 @@ router.get('/target/:target_id', (req, res) => {
     });
 });
 
+router.get('/indicators/:goal_id', (req, res) => {
+    let goal_id = req.params.goal_id;
+    
+    pool.connect()
+    .then((client) => {
+        return client.query(queries.getIndicatorsByGoal, [goal_id])
+            .then((resp) => {
+                client.release();
+                if (resp.rowCount > 0) {
+                    res.status(200).send({
+                        success : true,
+                        http_code : 200,
+                        data : resp.rows[0]
+                    });
+                } else {
+                    res.status(404).send({
+                        success : false,
+                        http_code : 404,
+                        message : "Invalid target id" 
+                    });
+                }
+            })
+            .catch((e) => {
+                client.release();
+                res.status(400).send({
+                    success : false,
+                    error : e.stack
+                });
+            });
+    });
+});
+
+
 router.get('/indicators/:target_id', (req, res) => {
     let target_id = req.params.target_id;
     
