@@ -27,7 +27,7 @@ function onError(error) {
         throw error;
     }
 
-    let bind = typeof port === 'string' ? 'Pipe' + port : 'Port' + port;
+    let bind = typeof port === 'string' ? 'Pipe ' + port : 'Port' + port;
 
     switch(error.code) {
         case 'EACCES':
@@ -49,7 +49,7 @@ function onError(error) {
 
  function onListening() {
      let address = server.address();
-     let bind = typeof address === 'string' ? 'Pipe' + address : 'Port' + address.port;
+     let bind = typeof address === 'string' ? 'Pipe ' + address : 'Port' + address.port;
      debug('Listening on ' + bind);
  }
 
