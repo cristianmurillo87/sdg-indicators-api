@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "nodemon server.js"
+    "test": "concurrently 'postgres -D /usr/local/var/postgres' 'nodemon server.js' "
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,7 @@
     "pg": "^7.4.2"
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "nodemon": "^1.17.4"
   }
 }
