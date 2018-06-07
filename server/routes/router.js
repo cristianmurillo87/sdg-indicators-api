@@ -423,4 +423,23 @@ router.get('/seriesdata/:series_id/:country_id', (req, res) => {
 });
 
 
+router.get('/countries', (req, res, next) => {
+    pool.connect()
+        .then((client) => {
+            return client.query(queries.getCountries)
+                .then((response) => {
+                    client.release();
+                    res.send(response.rows[0].countries);
+                })
+                .catch((e) => {
+                    client.release();
+                    res.status(400).send({
+                        success : false,
+                        error : e.stack
+                    });
+                });
+        });
+});
+
+
 module.exports = router;
